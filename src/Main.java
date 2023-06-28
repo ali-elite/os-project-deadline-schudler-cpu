@@ -1,23 +1,20 @@
-import java.util.Scanner;
+import javax.swing.*;
 
 public class Main {
 
     public static void main(String[] args) {
         Scheduler scheduler = new Scheduler();
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("please enter number of tasks: ");
-        int n = scanner.nextInt();
-        int id = 0;
-        for (int i = 0; i < n; i++) {
-            int priority = scanner.nextInt();
-            String name = scanner.next();
-            int arrival = scanner.nextInt();
-            int deadline = scanner.nextInt();
-            int cbt = scanner.nextInt();
-            Task task = new Task(id++, name, priority, arrival, cbt, deadline);
-            scheduler.addTask(task);
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException |
+                 UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(DeadlineGraphic.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        System.out.println("start");
-        scheduler.process();
+        java.awt.EventQueue.invokeLater(() -> new DeadlineGraphic(scheduler).setVisible(true));
     }
 }

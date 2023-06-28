@@ -1,5 +1,4 @@
 public class Task implements Comparable<Task> {
-    int id;
     String name;
     int priority;
     long arriveTime;
@@ -9,8 +8,7 @@ public class Task implements Comparable<Task> {
     boolean isFinished;
     long finishedTime = 0;
 
-    public Task(int id, String name, int priority, long arriveTime, long cbt, long deadline) {
-        this.id = id;
+    public Task(String name, int priority, long arriveTime, long cbt, long deadline) {
         this.name = name;
         this.priority = priority;
         this.arriveTime = arriveTime;
@@ -19,47 +17,33 @@ public class Task implements Comparable<Task> {
         this.remainingTime = cbt;
     }
 
-    public int getPriority() {
-        return priority;
+    public String getName() {
+        return name;
     }
 
-    public void setPriority(int priority) {
-        this.priority = priority;
+    public long getFinishedTime() {
+        return finishedTime;
+    }
+
+    public int getPriority() {
+        return priority;
     }
 
     public long getArriveTime() {
         return arriveTime;
     }
 
-    public void setArriveTime(long arriveTime) {
-        this.arriveTime = arriveTime;
-    }
-
     public long getCbt() {
         return cbt;
-    }
-
-    public void setCbt(long cbt) {
-        this.cbt = cbt;
     }
 
     public long getDeadline() {
         return deadline;
     }
 
-    public void setDeadline(long deadline) {
-        this.deadline = deadline;
-    }
-
-
-    public String toString2() {
-        return "Task " + name + ", remaining time: " + remainingTime;
-    }
-
     @Override
     public String toString() {
         return "Task " + "id=" + name + ", arriveTime=" + arriveTime + ", cbt=" + cbt + ", finish at=" + finishedTime +
-
                 ", deadline=" + deadline + ", isFinished.";
     }
 
